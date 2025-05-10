@@ -18,9 +18,6 @@ public class Ruta {
     @Column(name="inicio",nullable = false,length = 80)
     private String inicio;
 
-    @Column(name="fin",nullable = false,length = 80)
-    private String fin;
-
     @Column(name="distanciaMetros",nullable = false)
     private int distanciaMinutos;
 
@@ -44,7 +41,6 @@ public class Ruta {
         this.nombreRuta = nombreRuta;
         this.destino = destino;
         this.inicio = inicio;
-        this.fin = fin;
         this.distanciaMinutos = distanciaMinutos;
         this.tiempoRuta = tiempoRuta;
         this.longitud = longitud;
@@ -82,14 +78,6 @@ public class Ruta {
 
     public void setInicio(String inicio) {
         this.inicio = inicio;
-    }
-
-    public String getFin() {
-        return fin;
-    }
-
-    public void setFin(String fin) {
-        this.fin = fin;
     }
 
     public int getDistanciaMinutos() {

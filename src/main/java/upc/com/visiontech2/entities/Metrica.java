@@ -23,7 +23,7 @@ public class Metrica {
     @Column(name = "fecha",nullable = false)
     private LocalDate fecha;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idRuta")
     private Ruta ruta;
 

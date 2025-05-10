@@ -1,9 +1,12 @@
 package upc.com.visiontech2.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import upc.com.visiontech2.dto.MetricaDTO;
+import upc.com.visiontech2.dto.RutaDTO;
 import upc.com.visiontech2.entities.Metrica;
 import upc.com.visiontech2.serviceinterfaces.IMetricaService;
 
@@ -18,6 +21,12 @@ public class MetricaController{
     private IMetricaService mS;
 
     @GetMapping
+
+    @Operation( // security swagger
+            summary = "Mi endpoint protegido", // security swagger
+            description = "Descripción del endpoint",  // security swagger
+            security = { @SecurityRequirement(name = "bearerAuth") }  // security swagger
+    )
     public List<MetricaDTO> listar(){
         return mS.list().stream().map(x->{
             ModelMapper modelMapper = new ModelMapper();

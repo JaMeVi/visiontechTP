@@ -11,7 +11,6 @@ public class CondicionAtmosfericaDTO {
     private double temperatura;
     private int velocidadViento;
     private LocalDate fechaHora;
-    private Ruta ruta;
 
     public int getIdCondicionAtmosferica() {
         return idCondicionAtmosferica;
@@ -53,11 +52,5 @@ public class CondicionAtmosfericaDTO {
         this.fechaHora = fechaHora;
     }
 
-    public Ruta getRuta() {
-        return ruta;
-    }
 
-    public void setRuta(Ruta ruta) {
-        this.ruta = ruta;
-    }
 }

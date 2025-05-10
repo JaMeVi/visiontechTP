@@ -4,23 +4,19 @@ import upc.com.visiontech2.entities.Role;
 
 import java.util.List;
 
-public class UsuarioDTO {
-    private long idUsuario;
+public class UsersDTO {
+    private Long id;
     private String username;
-    private String password;
     private Boolean enabled;
-    private String nombre;
     private String correoElectronico;
     private int telefono;
+    private String nombre;
     private List<Role> rol;
 
-    public long getIdUsuario() {
-        return idUsuario;
-    }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    public Long getId() {  return id; }
+
+    public void setId(Long id) {  this.id = id;    }
 
     public String getUsername() {
         return username;
@@ -28,14 +24,6 @@ public class UsuarioDTO {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Boolean getEnabled() {

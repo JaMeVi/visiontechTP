@@ -11,7 +11,7 @@ public class MetricaDTO {
     private int caloriasQuemadas;
     private int tiempoEfectivoMinutos;
     private LocalDate fecha;
-    private Ruta ruta;
+
 
     public int getIdMetrica() {
         return idMetrica;
@@ -53,11 +53,5 @@ public class MetricaDTO {
         this.fecha = fecha;
     }
 
-    public Ruta getRuta() {
-        return ruta;
-    }
 
-    public void setRuta(Ruta ruta) {
-        this.ruta = ruta;
-    }
 }

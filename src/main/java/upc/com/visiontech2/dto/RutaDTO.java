@@ -12,7 +12,7 @@ public class RutaDTO {
     private int tiempoRuta;
     private int longitud;
     private int latitud;
-    private User usuario;
+
 
     public int getIdRuta() {
         return idRuta;

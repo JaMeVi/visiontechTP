@@ -58,5 +58,4 @@ public class RutaController {
             return m.map(x, RutaDTO.class);
         }).collect(Collectors.toList());
     }
-
 }
