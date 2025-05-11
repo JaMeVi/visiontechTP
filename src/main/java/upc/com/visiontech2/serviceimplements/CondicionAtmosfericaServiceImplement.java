@@ -27,4 +27,16 @@ public class CondicionAtmosfericaServiceImplement implements ICondicionAtmosferi
 
     @Override
     public void delete(int idCondicionAtmosferica) {cR.deleteById(idCondicionAtmosferica);}
+
+    @Override
+    public  List<CondicionAtmosferica> findByNombreRutaAndFechaHoraBetween(String nombreRuta, LocalDateTime fechainicio, LocalDateTime fechafin) {
+        return cR.findByNombreRutaAndFechaHoraBetween(nombreRuta, fechainicio, fechafin);
+    }
+
+    @Override
+    public Optional<CondicionAtmosferica> findUltimaByNombreRuta(String nombreRuta) {
+        return cR.findUltimaByNombreRuta(nombreRuta.trim().toLowerCase());
+    }
+
 }
+
