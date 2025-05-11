@@ -43,7 +43,13 @@ public class UsersController {
         return dto;
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping(value = "/username/{username}")
+    public UsersDTO buscarPorUsername(@PathVariable("username") String username) {
+        ModelMapper m = new ModelMapper();
+        return m.map(uS.findOneByUsername(username), UsersDTO.class);
+    }
+
+    @DeleteMapping(value = "/{id}", params = "type=id")
     public void delete(@PathVariable ("id") Integer id){
         uS.delete(id);
     }

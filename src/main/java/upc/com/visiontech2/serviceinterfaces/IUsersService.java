@@ -10,4 +10,6 @@ public interface IUsersService {
     public void delete (long id);
     public Users listId(long id);
     public List<Users> obtenerUsuariosConMuchosRegistros(long minCantidad);
+    public Users findOneByUsername(String username);
+
 }

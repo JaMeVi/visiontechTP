@@ -6,7 +6,7 @@ import upc.com.visiontech2.entities.Users;
 public class RolDTO {
     private Long id;
     private String rol;
-    private UsersDTO user;
+    private Long userId;
 
     public Long getId() {      return id;    }
 
@@ -20,11 +20,11 @@ public class RolDTO {
         this.rol = rol;
     }
 
-    public UsersDTO getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(UsersDTO user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

@@ -12,35 +12,37 @@ import java.util.List;
 public class ContactoEmergenciaServiceImplement implements IContactoEmergenciaService {
 
     @Autowired
-    private ContactoEmergenciaRepository contactoEmergenciaRepository;
+    private ContactoEmergenciaRepository cR;
 
     @Override
     public List<ContactoEmergencia> list() {
-        return contactoEmergenciaRepository.findAll();
+        return cR.findAll();
     }
 
     @Override
     public void insert(ContactoEmergencia contactoEmergencia) {
-        contactoEmergenciaRepository.save(contactoEmergencia);
+        cR.save(contactoEmergencia);
     }
 
     @Override
     public ContactoEmergencia listId(int idContacto) {
-        return contactoEmergenciaRepository.findById(idContacto).orElse(null);
+        return cR.findById(idContacto).orElse(null);
     }
 
     @Override
     public void update(ContactoEmergencia contactoEmergencia) {
-        contactoEmergenciaRepository.save(contactoEmergencia);
+        cR.save(contactoEmergencia);
     }
 
     @Override
     public void delete(int idContacto) {
-        contactoEmergenciaRepository.deleteById(idContacto);
+        cR.deleteById(idContacto);
     }
 
     @Override
-    public List<ContactoEmergencia> buscarPorNombre(String nombre) {
-        return contactoEmergenciaRepository.findByNombreContainingIgnoreCase(nombre);
+    public List<ContactoEmergencia> obtenerContactosEmergenciaUsuario(Long idUsuario) {
+        return cR.obtenerContactosEmergenciaUsuario(idUsuario);
     }
+
+
 }
