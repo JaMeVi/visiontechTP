@@ -14,6 +14,7 @@ public class RutaDTO {
     private int latitud;
 
 
+
     public int getIdRuta() {
         return idRuta;
     }
