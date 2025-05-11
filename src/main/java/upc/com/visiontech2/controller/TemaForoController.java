@@ -7,6 +7,7 @@ import upc.com.visiontech2.dto.TemaForoDTO;
 import upc.com.visiontech2.entities.TemaForo;
 import upc.com.visiontech2.serviceinterfaces.ITemaForoService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,4 +45,34 @@ public class TemaForoController {
     public void eliminar(@PathVariable("idTemaForo") int idTemaForo) {
         tS.delete(idTemaForo);
     }
+
+    @GetMapping("/temadespuesdefecha")
+    public List<TemaForoDTO> TemasDespuesDeFecha(LocalDate fecha) {
+        return tS.TemasDespuesDeFecha(fecha).stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,TemaForoDTO.class);
+        }).collect(Collectors.toList());
+    }
+    @GetMapping("/temaantesdefecha")
+    public List<TemaForoDTO> TemasAntesDeFecha(LocalDate fecha) {
+        return tS.TemasAntesDeFecha(fecha).stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,TemaForoDTO.class);
+        }).collect(Collectors.toList());
+    }
+    @GetMapping("/temascerrados")
+    public List<TemaForoDTO> TemasCerrados() {
+        return tS.TemasCerrados().stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,TemaForoDTO.class);
+        }).collect(Collectors.toList());
+    }
+    @GetMapping("/temasporusuario")
+    public List<TemaForoDTO> TemasPorUsuario(int idUsuario) {
+        return tS.TemasPorUsuario(idUsuario).stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,TemaForoDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 }
