@@ -1,4 +1,4 @@
-bkjklpackage upc.com.visiontech2.dto;
+package upc.com.visiontech2.dto;
 
 public class CaloriasTotalesPorRutaDTO {
 
