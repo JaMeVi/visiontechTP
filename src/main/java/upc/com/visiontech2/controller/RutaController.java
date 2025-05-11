@@ -58,4 +58,30 @@ public class RutaController {
             return m.map(x, RutaDTO.class);
         }).collect(Collectors.toList());
     }
+    @PutMapping("/marcarfavorito/{id}/{estado}")
+    public void marcarFavorito(@PathVariable("id") int id, @PathVariable("estado") boolean estado) {
+        rS.marcarFavorita(id, estado);
+    }
+
+    @GetMapping("/favoritas")
+    public ResponseEntity<List<Ruta>> listarFavoritas() {
+        return ResponseEntity.ok(rS.listarFavoritas());
+
+    }
+
+    @GetMapping("/mas-corta-tiempo")
+    public ResponseEntity<Ruta> getRutaMasCortaPorTiempo() {
+        Ruta ruta = rS.obtenerRutaMasCortaPorTiempo();
+        return ResponseEntity.ok(ruta);
+    }
+
+    @GetMapping("/mas-corta-distancia")
+    public ResponseEntity<Ruta> getRutaMasCortaPorDistancia() {
+        Ruta ruta = rS.obtenerRutaMasCortaPorDistancia();
+        return ResponseEntity.ok(ruta);
+    }
+    @GetMapping("/promedio-tiempo/{idRuta}")
+    public RutaPromedioDTO obtenerPromedioTiempo(@PathVariable int idRuta) {
+        return rS.obtenerPromedioTiempoRuta(idRuta);
+    }
 }
