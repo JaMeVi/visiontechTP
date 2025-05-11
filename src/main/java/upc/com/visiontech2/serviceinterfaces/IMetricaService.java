@@ -11,4 +11,9 @@ public interface IMetricaService {
     public void update(Metrica m);
     public void delete(int idMetrica);
 
+    List<Metrica> listByNombreRuta(String nombreRuta);
+
+    int sumCaloriasByNombreRuta(String nombreRuta);
+
+
 }
