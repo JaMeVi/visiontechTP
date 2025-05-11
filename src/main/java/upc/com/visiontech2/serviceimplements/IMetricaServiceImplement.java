@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class IMetricaServiceImplement implements IMetricaService {
+
     @Autowired
     private MetricaRepository mR;
 
@@ -38,4 +39,19 @@ public class IMetricaServiceImplement implements IMetricaService {
     public void delete(int idMetrica) {
         mR.deleteById(idMetrica);
     }
+
+    @Override
+    public List<Metrica> listByNombreRuta(String nombreRuta) {
+        return mR.findByNombreRutaContaining(nombreRuta);
+    }
+
+    @Override
+    public int sumCaloriasByNombreRuta(String nombreRuta) {
+        int total = mR.sumCaloriasByNombreRuta(nombreRuta);
+        return total ;
+    }
+
+
+
 }
+
