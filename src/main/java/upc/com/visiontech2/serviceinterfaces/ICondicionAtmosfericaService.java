@@ -11,4 +11,9 @@ public interface ICondicionAtmosfericaService {
     public CondicionAtmosferica listId(int idCondicionAtmosferica);
     public void update(CondicionAtmosferica c);
     public void delete(int idCondicionAtmosferica);
+
+    List<CondicionAtmosferica> findByNombreRutaAndFechaHoraBetween(String nombreRuta, LocalDateTime fechainicio, LocalDateTime fechafin);
+
+    Optional<CondicionAtmosferica> findUltimaByNombreRuta(String nombreRuta);
+
 }
