@@ -1,6 +1,5 @@
 package upc.com.visiontech2.serviceinterfaces;
 
-import org.springframework.data.repository.query.Param;
 import upc.com.visiontech2.entities.ContactoEmergencia;
 
 import java.util.List;

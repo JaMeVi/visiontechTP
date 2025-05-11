@@ -1,7 +1,5 @@
 package upc.com.visiontech2.dto;
 
-import upc.com.visiontech2.entities.Role;
-import upc.com.visiontech2.entities.Users;
 
 public class RolDTO {
     private Long id;

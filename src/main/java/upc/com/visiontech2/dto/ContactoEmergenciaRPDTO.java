@@ -1,8 +1,5 @@
 package upc.com.visiontech2.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import upc.com.visiontech2.entities.Users;
 
 public class ContactoEmergenciaRPDTO {

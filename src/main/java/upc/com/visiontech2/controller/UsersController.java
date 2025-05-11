@@ -10,7 +10,6 @@ import upc.com.visiontech2.dto.UsersDTO;
 import upc.com.visiontech2.entities.Users;
 import upc.com.visiontech2.serviceinterfaces.IUsersService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
