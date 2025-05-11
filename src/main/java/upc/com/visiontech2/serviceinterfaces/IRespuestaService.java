@@ -13,7 +13,7 @@ public interface IRespuestaService {
     public void delete(int idRespuesta);
     public List<Respuesta> RespuestasDespuesDeFecha(LocalDate fecha);
     public List<Respuesta> RespuestasAntesDeFecha(LocalDate fecha);
-    public List<Object[]> RespuestasPorTema();
+    public List<Object[]> CantidadRespuestasPorTema();
     public List<Object[]> TemasPorCantidadDeRespuestas();
     List<Respuesta> RespuestasPorTema(int idTema);
 }

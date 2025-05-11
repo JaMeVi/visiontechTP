@@ -21,7 +21,7 @@ public interface RespuestaRepository extends JpaRepository<Respuesta, Integer> {
 
     //Cantidad de respuestas por cada tema
     @Query("SELECT r.temaForo.tituloTema, COUNT(r) FROM Respuesta r GROUP BY r.temaForo.tituloTema")
-    List<Object[]> RespuestasPorTema();
+    List<Object[]> CantidadRespuestasPorTema();
 
     //3 temas con mas respuestas
     @Query("SELECT r.temaForo.tituloTema, COUNT(r) as total FROM Respuesta r GROUP BY r.temaForo.tituloTema ORDER BY total DESC")

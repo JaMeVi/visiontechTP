@@ -50,8 +50,8 @@ public class RespuestaServiceImplement implements IRespuestaService {
     }
 
     @Override
-    public List<Object[]> RespuestasPorTema() {
-        return rR.RespuestasPorTema();
+    public List<Object[]> CantidadRespuestasPorTema() {
+        return rR.CantidadRespuestasPorTema();
     }
 
     @Override

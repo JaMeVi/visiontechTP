@@ -7,6 +7,7 @@ import upc.com.visiontech2.dto.RespuestaDTO;
 import upc.com.visiontech2.entities.Respuesta;
 import upc.com.visiontech2.serviceinterfaces.IRespuestaService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,4 +45,23 @@ public class RespuestaController {
     public void eliminar(@PathVariable("idRespuesta") int idRespuesta) {
         rS.delete(idRespuesta);
     }
+
+    @GetMapping("/respuestadespuesdefecha")
+    public List<RespuestaDTO> RespuestasDespuesDeFecha(LocalDate fecha) {
+        return rS.RespuestasDespuesDeFecha(fecha).stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,RespuestaDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/respuestaantesdefecha")
+    public List<RespuestaDTO> RespuestasAntesDeFecha(LocalDate fecha) {
+        return rS.RespuestasAntesDeFecha(fecha).stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,RespuestaDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+
+
 }
