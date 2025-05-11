@@ -51,4 +51,23 @@ public class MetricaController{
     @DeleteMapping("/{idMetrica}")
     public void eliminar(@PathVariable("idMetrica") int idMetrica){mS.delete(idMetrica);}
 
+ @GetMapping("/buscar_metrica_ruta/{nombreRuta}")
+    @PreAuthorize("hasAuthority('PRO')")
+    public List<MetricaDTO> buscarPorRuta(@PathVariable String nombreRuta) {
+        return mS.listByNombreRuta(nombreRuta).stream().map(metrica -> {
+                    ModelMapper modelMapper = new ModelMapper();
+                    return modelMapper.map(metrica, MetricaDTO.class);
+                })
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/total-calorias/{nombreRuta}")
+    @PreAuthorize("hasAuthority('PRO')")
+    public CaloriasTotalesPorRutaDTO getTotalCaloriasExactas(@PathVariable String nombreRuta
+    ) {
+        int total = mS.sumCaloriasByNombreRuta(nombreRuta);
+        return new CaloriasTotalesPorRutaDTO(total);
+    }
+
+    
 }
