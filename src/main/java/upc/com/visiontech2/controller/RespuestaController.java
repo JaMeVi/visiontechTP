@@ -62,6 +62,28 @@ public class RespuestaController {
         }).collect(Collectors.toList());
     }
 
+    @GetMapping("/cantidadrespuestasportema")
+    public List<Object[]> CantidadRespuestasPorTema() {
+        return rS.CantidadRespuestasPorTema().stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,Object[].class);
+        }).collect(Collectors.toList());
+    }
 
+    @GetMapping("/temasporcantidadrespuestas")
+    public List<Object[]> TemasPorCantidadDeRespuestas() {
+        return rS.TemasPorCantidadDeRespuestas().stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,Object[].class);
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/respuestasportema")
+    public List<RespuestaDTO> RespuestasPorTema(int idTema) {
+        return rS.RespuestasPorTema(idTema).stream().map(y->{
+            ModelMapper m = new ModelMapper();
+            return m.map(y,RespuestaDTO.class);
+        }).collect(Collectors.toList());
+    }
 
 }
