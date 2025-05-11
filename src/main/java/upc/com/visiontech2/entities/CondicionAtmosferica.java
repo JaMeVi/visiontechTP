@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name="condiciones_atmosfericas")
 public class CondicionAtmosferica {
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCondicionAtmosferica;
 
@@ -21,20 +21,28 @@ public class CondicionAtmosferica {
     private int velocidadViento;
 
     @Column(name="fechaHora",nullable = false)
-    private LocalDate fechaHora;
+    private LocalDateTime fechaHora;
 
     @ManyToOne //ccc
     @JoinColumn(name="idRuta")
     private Ruta ruta;
     public CondicionAtmosferica() {}
 
-    public CondicionAtmosferica(int idCondicionAtmosferica, int humedad, double temperatura, int velocidadViento, LocalDate fechaHora, Ruta ruta) {
+    public CondicionAtmosferica(int idCondicionAtmosferica, int humedad, double temperatura, int velocidadViento, LocalDateTime fechaHora, Ruta ruta) {
         this.idCondicionAtmosferica = idCondicionAtmosferica;
         this.humedad = humedad;
         this.temperatura = temperatura;
         this.velocidadViento = velocidadViento;
         this.fechaHora = fechaHora;
         this.ruta = ruta;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
     }
 
     public int getIdCondicionAtmosferica() {
@@ -67,14 +75,6 @@ public class CondicionAtmosferica {
 
     public void setVelocidadViento(int velocidadViento) {
         this.velocidadViento = velocidadViento;
-    }
-
-    public LocalDate getFechaHora() {
-        return fechaHora;
-    }
-
-    public void setFechaHora(LocalDate fechaHora) {
-        this.fechaHora = fechaHora;
     }
 
     public Ruta getRuta() {
