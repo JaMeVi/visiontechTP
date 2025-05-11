@@ -48,6 +48,22 @@ public class CondicionAtmosfericaController {
     }
 
     @DeleteMapping( "/{idCAtmosferica}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("idCAtmosferica") int idCAtmosferica){cA.delete(idCAtmosferica);}
+
+     @GetMapping("/catmosferica_ruta/{nombreRuta}/{fechainicio}/{fechafin}")
+    @PreAuthorize("hasAuthority('PRO')")
+    public List<CondicionAtmosfericaDTO> buscarPorRutaYFecha(
+            @PathVariable String nombreRuta,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime fechainicio,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime fechafin)
+    {
+
+        return cA.findByNombreRutaAndFechaHoraBetween(nombreRuta, fechainicio, fechafin).stream().map(condicion -> {
+            ModelMapper modelMapper = new ModelMapper();
+            return modelMapper.map(condicion, CondicionAtmosfericaDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 
 }
