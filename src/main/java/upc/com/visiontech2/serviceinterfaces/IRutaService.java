@@ -1,5 +1,4 @@
-package upc.com.visiontech2.serviceinterfaces;
-
+import upc.com.visiontech2.dto.RutaPromedioDTO;
 import upc.com.visiontech2.entities.Ruta;
 
 import java.util.List;
@@ -11,4 +10,8 @@ public interface IRutaService {
     public void update(Ruta r);
     public void delete(int idRuta);
     public List<Ruta> buscarPorNombre(String nombre);
-}
+    public void marcarFavorita(int idRuta, boolean estado);
+    List<Ruta> listarFavoritas();
+    Ruta obtenerRutaMasCortaPorTiempo();
+    Ruta obtenerRutaMasCortaPorDistancia();
+    RutaPromedioDTO obtenerPromedioTiempoRuta(int idRuta);
