@@ -10,6 +10,11 @@ import java.util.List;
 
 @Repository
 public interface RutaRepository extends JpaRepository<Ruta, Integer> {
-    @Query("Select r from Ruta r where r.nombreRuta like %:nombre%")
+     @Query("Select r from Ruta r where r.nombreRuta like %:nombre%")
     public List<Ruta> buscarNombre(@Param("nombre") String nombre);
+    List<Ruta> findByFavoritoTrue();
+    Ruta findTopByOrderByTiempoRutaAsc();
+    Ruta findTopByOrderByDistanciaMetrosAsc();
+    @Query("SELECT AVG(r.tiempoRuta) FROM Ruta r WHERE r.idRuta = :idRuta")
+    Double obtenerPromedioTiempoPorRuta(int idRuta);
 }
