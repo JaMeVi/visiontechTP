@@ -6,6 +6,7 @@ import upc.com.visiontech2.entities.TemaForo;
 import upc.com.visiontech2.repositories.TemaForoRepository;
 import upc.com.visiontech2.serviceinterfaces.ITemaForoService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -37,4 +38,25 @@ public class TemaForoServiceImplement implements ITemaForoService {
     public void delete(int idTemaForo) {
         tR.deleteById(idTemaForo);
     }
+
+    @Override
+    public List<TemaForo> TemasDespuesDeFecha(LocalDate fecha) {
+        return tR.TemasDespuesDeFecha(fecha);
+    }
+
+    @Override
+    public List<TemaForo> TemasAntesDeFecha(LocalDate fecha) {
+        return tR.TemasAntesDeFecha(fecha);
+    }
+
+    @Override
+    public List<TemaForo> TemasCerrados() {
+        return tR.TemasCerrados();
+    }
+
+    @Override
+    public List<TemaForo> TemasPorUsuario(int idUsuario) {
+        return tR.TemasPorUsuario(idUsuario);
+    }
+
 }

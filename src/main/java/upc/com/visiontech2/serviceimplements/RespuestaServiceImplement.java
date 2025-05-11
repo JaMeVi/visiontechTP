@@ -6,6 +6,7 @@ import upc.com.visiontech2.entities.Respuesta;
 import upc.com.visiontech2.repositories.RespuestaRepository;
 import upc.com.visiontech2.serviceinterfaces.IRespuestaService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -36,5 +37,30 @@ public class RespuestaServiceImplement implements IRespuestaService {
     @Override
     public void delete(int idRespuesta) {
         rR.deleteById(idRespuesta);
+    }
+
+    @Override
+    public List<Respuesta> RespuestasDespuesDeFecha(LocalDate fecha) {
+        return rR.RespuestasDespuesDeFecha(fecha);
+    }
+
+    @Override
+    public List<Respuesta> RespuestasAntesDeFecha(LocalDate fecha) {
+        return rR.RespuestasAntesDeFecha(fecha);
+    }
+
+    @Override
+    public List<Object[]> RespuestasPorTema() {
+        return rR.RespuestasPorTema();
+    }
+
+    @Override
+    public List<Object[]> TemasPorCantidadDeRespuestas() {
+        return rR.TemasPorCantidadDeRespuestas();
+    }
+
+    @Override
+    public List<Respuesta> RespuestasPorTema(int idTema) {
+        return rR.RespuestasPorTema(idTema);
     }
 }
