@@ -11,15 +11,19 @@ import java.util.List;
 
 @Repository
 public interface TemaForoRepository extends JpaRepository<TemaForo, Integer> {
-    // 1. Temas creados después de una fecha
+    //Temas creados después de una fecha
     @Query("SELECT t FROM TemaForo t WHERE t.fechaCreacion > :fecha")
     List<TemaForo> TemasDespuesDeFecha(@Param("fecha") LocalDate fecha);
 
-    // 2. Temas cerrados
+    //Temas creados después de una fecha
+    @Query("SELECT t FROM TemaForo t WHERE t.fechaCreacion < :fecha")
+    List<TemaForo> TemasAntesDeFecha(@Param("fecha") LocalDate fecha);
+
+    //Temas cerrados
     @Query("SELECT t FROM TemaForo t WHERE t.estadoCerrado = true")
     List<TemaForo> TemasCerrados();
 
-    // 4. Temas por usuario
+    //Temas por usuario
     @Query("SELECT t FROM TemaForo t WHERE t.usuario.id = :idUsuario")
     List<TemaForo> TemasPorUsuario(@Param("idUsuario") int idUsuario);
 
