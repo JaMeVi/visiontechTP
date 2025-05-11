@@ -15,3 +15,10 @@ public interface CondicionAtmosfericaRepository extends JpaRepository<CondicionA
             @Param("fechaInicio") LocalDateTime fechaInicio,
             @Param("fechaFin") LocalDateTime fechaFin
     );
+
+@Query("SELECT c FROM CondicionAtmosferica c WHERE LOWER(TRIM(c.ruta.nombreRuta)) = LOWER(TRIM(:nombreRuta)) " +
+            "ORDER BY c.fechaHora DESC LIMIT 1")
+    Optional<CondicionAtmosferica> findUltimaByNombreRuta(@Param("nombreRuta") String nombreRuta);
+}
+
+    
