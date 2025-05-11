@@ -5,7 +5,18 @@ import upc.com.visiontech2.entities.Ruta;
 import java.time.LocalDate;
 
 public class CondicionAtmosfericaDTO {
-  private int idCondicionAtmosferica;
+  
+    private int idCondicionAtmosferica;
+    private int humedad;
+    private double temperatura;
+    private int velocidadViento;
+    private LocalDateTime fechaHora;
+
+    public CondicionAtmosfericaDTO() {
+    }
+
+    public CondicionAtmosfericaDTO(int idCondicionAtmosferica, double temperatura, int velocidadViento, int humedad, LocalDateTime fechaHora) {
+         private int idCondicionAtmosferica;
     private int humedad;
     private double temperatura;
     private int velocidadViento;
@@ -62,3 +73,4 @@ public class CondicionAtmosfericaDTO {
         this.temperatura = temperatura;
     }
 }
+
