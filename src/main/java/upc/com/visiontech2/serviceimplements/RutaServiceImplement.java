@@ -42,4 +42,37 @@ public class RutaServiceImplement implements IRutaService {
     public List<Ruta> buscarPorNombre(String nombre) {
         return rR.buscarNombre(nombre);
     }
+
+    @Override
+    public void marcarFavorita(int idRuta, boolean estado) {
+        Ruta ruta = rR.findById(idRuta).orElse(null);
+        if (ruta != null) {
+            ruta.setFavorito(estado);
+            rR.save(ruta);
+        }
+
+    }
+
+    @Override
+    public List<Ruta> listarFavoritas() {
+        return rR.findByFavoritoTrue();
+    }
+
+
+    @Override
+    public Ruta obtenerRutaMasCortaPorTiempo() {
+        return rR.findTopByOrderByTiempoRutaAsc();
+    }
+
+    @Override
+    public Ruta obtenerRutaMasCortaPorDistancia() {
+        return rR.findTopByOrderByDistanciaMetrosAsc();
+    }
+
+    @Override
+    public RutaPromedioDTO obtenerPromedioTiempoRuta(int idRuta) {
+        Double promedio = rR.obtenerPromedioTiempoPorRuta(idRuta);
+        if (promedio == null) promedio = 0.0;
+        return new RutaPromedioDTO(idRuta, promedio);
+    }
 }
