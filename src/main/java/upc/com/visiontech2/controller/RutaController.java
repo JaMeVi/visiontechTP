@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import upc.com.visiontech2.dto.RutaDTO;
+import upc.com.visiontech2.dto.RutaPromedioDTO;
 import upc.com.visiontech2.entities.Ruta;
 import upc.com.visiontech2.serviceinterfaces.IRutaService;
 
