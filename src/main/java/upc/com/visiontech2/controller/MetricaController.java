@@ -51,4 +51,17 @@ public class MetricaController{
     @DeleteMapping("/{idMetrica}")
     public void eliminar(@PathVariable("idMetrica") int idMetrica){mS.delete(idMetrica);}
 
-}
+
+    @GetMapping("/buscar/{nombreRuta}")
+    @Operation(summary = "Buscar métricas por nombre de ruta")
+    public List<MetricaDTO> buscarPorRuta(@PathVariable String nombreRuta) {
+            return mS.listByNombreRuta(nombreRuta).stream().map(metrica -> {
+                        ModelMapper modelMapper = new ModelMapper();
+                        return modelMapper.map(metrica, MetricaDTO.class);
+                    })
+                    .collect(Collectors.toList());
+        }
+    }
+
+
+

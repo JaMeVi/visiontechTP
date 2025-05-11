@@ -1,5 +1,6 @@
 package upc.com.visiontech2.serviceinterfaces;
 
+import org.springframework.data.repository.query.Param;
 import upc.com.visiontech2.entities.ContactoEmergencia;
 
 import java.util.List;
@@ -10,6 +11,5 @@ public interface IContactoEmergenciaService {
     ContactoEmergencia listId(int idContacto);
     void update(ContactoEmergencia c);
     void delete(int idContacto);
-
-    List<ContactoEmergencia> buscarPorNombre(String nombre);
+    List<ContactoEmergencia> obtenerContactosEmergenciaUsuario(Long idUsuario);
 }

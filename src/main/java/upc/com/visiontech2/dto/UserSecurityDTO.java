@@ -1,18 +1,18 @@
 package upc.com.visiontech2.dto;
 
-import jakarta.persistence.Column;
 import upc.com.visiontech2.entities.Role;
 
 import java.util.List;
 
-public class UsersDTO {
+public class UserSecurityDTO {
     private Long id;
     private String username;
+    private String password;
     private Boolean enabled;
     private String correoElectronico;
     private int telefono;
     private String nombre;
-    private List<Role> roles;
+    private List<Role> rol;
 
     public Long getId() {
         return id;
@@ -28,6 +28,14 @@ public class UsersDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Boolean getEnabled() {
@@ -62,11 +70,11 @@ public class UsersDTO {
         this.nombre = nombre;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public List<Role> getRol() {
+        return rol;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRol(List<Role> rol) {
+        this.rol = rol;
     }
 }

@@ -38,4 +38,9 @@ public class IMetricaServiceImplement implements IMetricaService {
     public void delete(int idMetrica) {
         mR.deleteById(idMetrica);
     }
+
+    @Override
+    public List<Metrica> listByNombreRuta(String nombreRuta) {
+        return mR.findByNombreRutaContaining(nombreRuta);
+    }
 }
