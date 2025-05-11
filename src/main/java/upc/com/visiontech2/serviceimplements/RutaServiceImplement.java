@@ -3,6 +3,7 @@ package upc.com.visiontech2.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import upc.com.visiontech2.entities.Ruta;
+import upc.com.visiontech2.dto.RutaPromedioDTO;
 import upc.com.visiontech2.repositories.RutaRepository;
 import upc.com.visiontech2.serviceinterfaces.IRutaService;
 
