@@ -5,12 +5,22 @@ import upc.com.visiontech2.entities.Ruta;
 import java.time.LocalDate;
 
 public class CondicionAtmosfericaDTO {
-
-    private int idCondicionAtmosferica;
+  private int idCondicionAtmosferica;
     private int humedad;
     private double temperatura;
     private int velocidadViento;
-    private LocalDate fechaHora;
+    private LocalDateTime fechaHora;
+
+    public CondicionAtmosfericaDTO() {
+    }
+
+    public CondicionAtmosfericaDTO(int idCondicionAtmosferica, double temperatura, int velocidadViento, int humedad, LocalDateTime fechaHora) {
+        this.idCondicionAtmosferica = idCondicionAtmosferica;
+        this.temperatura = temperatura;
+        this.velocidadViento = velocidadViento;
+        this.humedad = humedad;
+        this.fechaHora = fechaHora;
+    }
 
     public int getIdCondicionAtmosferica() {
         return idCondicionAtmosferica;
@@ -28,12 +38,12 @@ public class CondicionAtmosfericaDTO {
         this.humedad = humedad;
     }
 
-    public double getTemperatura() {
-        return temperatura;
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
     }
 
-    public void setTemperatura(double temperatura) {
-        this.temperatura = temperatura;
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
     }
 
     public int getVelocidadViento() {
@@ -44,13 +54,11 @@ public class CondicionAtmosfericaDTO {
         this.velocidadViento = velocidadViento;
     }
 
-    public LocalDate getFechaHora() {
-        return fechaHora;
+    public double getTemperatura() {
+        return temperatura;
     }
 
-    public void setFechaHora(LocalDate fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setTemperatura(double temperatura) {
+        this.temperatura = temperatura;
     }
-
-
 }
