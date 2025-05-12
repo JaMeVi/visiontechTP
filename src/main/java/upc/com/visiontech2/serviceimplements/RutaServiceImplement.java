@@ -1,9 +1,11 @@
 package upc.com.visiontech2.serviceimplements;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import upc.com.visiontech2.entities.Ruta;
+import upc.com.visiontech2.dto.HistorialPorRutaDTO;
 import upc.com.visiontech2.dto.RutaPromedioDTO;
+import upc.com.visiontech2.entities.Ruta;
 import upc.com.visiontech2.repositories.RutaRepository;
 import upc.com.visiontech2.serviceinterfaces.IRutaService;
 
@@ -34,15 +36,6 @@ public class RutaServiceImplement implements IRutaService {
         rR.save(r);
     }
 
-    @Override
-    public void delete(int idRuta) {
-        rR.deleteById(idRuta);
-    }
-
-    @Override
-    public List<Ruta> buscarPorNombre(String nombre) {
-        return rR.buscarNombre(nombre);
-    }
 
     @Override
     public void marcarFavorita(int idRuta, boolean estado) {
@@ -52,6 +45,11 @@ public class RutaServiceImplement implements IRutaService {
             rR.save(ruta);
         }
 
+    }
+
+    @Override
+    public void delete(int idRuta) {
+        rR.deleteById(idRuta);
     }
 
     @Override
@@ -76,4 +74,11 @@ public class RutaServiceImplement implements IRutaService {
         if (promedio == null) promedio = 0.0;
         return new RutaPromedioDTO(idRuta, promedio);
     }
+
+    @Override
+    public Ruta obtenerPorNombre(String nombreRuta) {
+        return rR.findByNombreRuta(nombreRuta)
+                .orElseThrow(() -> new EntityNotFoundException("Ruta no encontrada con nombre: " + nombreRuta));
+    }
+
 }
