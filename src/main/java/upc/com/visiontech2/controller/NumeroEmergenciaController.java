@@ -61,24 +61,36 @@ public class NumeroEmergenciaController {
 
     }
     @GetMapping("/emergenciaytipo")
-    public ResponseEntity<List<NumeroEmergencia>> obtenerEmergenciasPorTipoYDistrito(
-            @RequestParam String tipoEmergencia,
-            @RequestParam String distrito,
+    public ResponseEntity<List<NumeroEmergenciaDTO>> obtenerEmergenciasPorTipoYDistrito(
+            @RequestParam(required = false) String tipoEmergencia,
+            @RequestParam(required = false) String distrito,
             @RequestParam(required = false) Long usuarioId) {
-
         Users usuario = null;
         if (usuarioId != null) {
-            // Buscar el usuario si se proporciona el usuarioId
-            usuario = new Users(); // Aquí debes obtener el usuario de la base de datos
-            usuario.setId(usuarioId); // Es solo un ejemplo de cómo obtener el usuario
+            usuario = new Users();
+            usuario.setId(usuarioId);
         }
-
         List<NumeroEmergencia> emergencias = nS.obtenerEmergenciasPorTipoYDistrito(tipoEmergencia, distrito, usuario);
+        ModelMapper modelMapper = new ModelMapper();
 
+        List<NumeroEmergenciaDTO> emergenciasdto = emergencias.stream()
+                .map(emergencia ->modelMapper.map(emergencia,NumeroEmergenciaDTO.class))
+                .collect(Collectors.toList());
         if (emergencias.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.ok(emergencias);
+        return ResponseEntity.ok(emergenciasdto);
+    }
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<NumeroEmergenciaDTO>> getEmergenciasByUserId(@PathVariable Long userId) {
+        List<NumeroEmergencia> emergencias = nS.findByUserId(userId);
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<NumeroEmergenciaDTO> emergenciasDTO = emergencias.stream()
+                .map(emergencia -> modelMapper.map(emergencia, NumeroEmergenciaDTO.class))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(emergenciasDTO);
     }
 }

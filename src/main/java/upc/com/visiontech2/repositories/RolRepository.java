@@ -7,4 +7,6 @@ import upc.com.visiontech2.entities.Role;
 
 @Repository
 public interface RolRepository extends JpaRepository<Role, Integer> {
+
+    
 }

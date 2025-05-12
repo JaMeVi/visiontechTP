@@ -8,7 +8,7 @@ public class NumeroEmergenciaDTO {
     private String tipoEmergencia;
     private String distrito;
     private int telefonoEmergencia;
-    private Users usuario;
+    private Long idUsuario;
 
     public int getIdNumeroEmergencia() {
         return idNumeroEmergencia;
@@ -42,11 +42,11 @@ public class NumeroEmergenciaDTO {
         this.telefonoEmergencia = telefonoEmergencia;
     }
 
-    public Users  getUsuario() {
-        return usuario;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Users usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }

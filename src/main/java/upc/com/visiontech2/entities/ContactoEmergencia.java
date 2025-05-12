@@ -4,7 +4,7 @@ package upc.com.visiontech2.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "contactos_emergencia")
+@Table(name = "contactosEmergencia")
 public class ContactoEmergencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

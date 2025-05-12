@@ -10,8 +10,11 @@ import java.util.List;
 
 @Repository
 public interface IUserRepository extends JpaRepository<Users, Long> {
+
     public Users findOneByUsername(String username);
 
+
+    public
 
     @Query("SELECT u FROM Users u WHERE SIZE(u.roles) > 0 AND " +
             "(SELECT COUNT(ne) FROM NumeroEmergencia ne WHERE ne.usuario = u) > :minCantidad")

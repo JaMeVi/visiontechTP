@@ -1,5 +1,6 @@
 package upc.com.visiontech2.serviceinterfaces;
 
+import org.springframework.data.repository.query.Param;
 import upc.com.visiontech2.entities.NumeroEmergencia;
 import upc.com.visiontech2.entities.Users;
 
@@ -13,4 +14,5 @@ public interface INumeroEmergenciaService {
     public void delete(int idNumeroEmergencia);
     public List<Object[]> countNumeroEmergenciaPorDistrito();
     public List<NumeroEmergencia> obtenerEmergenciasPorTipoYDistrito(String tipoEmergencia, String distrito, Users usuario);
+    public List<NumeroEmergencia> findByUserId(Long userId);
 }

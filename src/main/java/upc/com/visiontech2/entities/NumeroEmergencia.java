@@ -11,7 +11,7 @@ public class NumeroEmergencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idNumeroEmergencia;
 
-    @Column(name="tipoEmergencia",nullable = false,length = 10)
+    @Column(name="tipoEmergencia",nullable = false,length = 50)
     private String tipoEmergencia;
 
     @Column(name="distrito",nullable = false,length = 40)
@@ -21,7 +21,7 @@ public class NumeroEmergencia {
     private int telefonoEmergencia;
 
     @ManyToOne
-    @JoinColumn(name="idUsuario")
+    @JoinColumn(name="user_id")
     private Users usuario;
 
     public NumeroEmergencia() {}

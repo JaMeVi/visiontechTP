@@ -49,4 +49,9 @@ public class NumeroEmergenciaServiceImplement implements INumeroEmergenciaServic
     public List<NumeroEmergencia> obtenerEmergenciasPorTipoYDistrito(String tipoEmergencia, String distrito, Users usuario) {
         return nR.findByTipoYDistritoAndUsuario(tipoEmergencia, distrito, usuario);
     }
+
+    @Override
+    public List<NumeroEmergencia> findByUserId(Long userId) {
+        return nR.findByUserId(userId);
+    }
 }
