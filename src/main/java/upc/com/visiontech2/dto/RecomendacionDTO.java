@@ -6,7 +6,7 @@ public class RecomendacionDTO {
     private int idRecomendacion;
     private String comentario;
     private int puntuacion;
-    private Ruta ruta;
+    private int idRuta;
 
     public int getIdRecomendacion() {
         return idRecomendacion;
@@ -32,11 +32,7 @@ public class RecomendacionDTO {
         this.puntuacion = puntuacion;
     }
 
-    public Ruta getRuta() {
-        return ruta;
-    }
+    public int getIdRuta() {return idRuta;}
 
-    public void setRuta(Ruta ruta) {
-        this.ruta = ruta;
-    }
+    public void setIdRuta(int idRuta) {this.idRuta = idRuta;}
 }
