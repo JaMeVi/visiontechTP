@@ -45,6 +45,7 @@ public class IMetricaServiceImplement implements IMetricaService {
         return mR.findByNombreRutaContaining(nombreRuta);
     }
 
+
     @Override
     public int sumCaloriasByNombreRuta(String nombreRuta) {
         int total = mR.sumCaloriasByNombreRuta(nombreRuta);

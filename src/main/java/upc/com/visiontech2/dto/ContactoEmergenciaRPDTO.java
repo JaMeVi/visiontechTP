@@ -1,36 +1,16 @@
-package upc.com.visiontech2.entities;
+package upc.com.visiontech2.dto;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import upc.com.visiontech2.entities.Users;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "contactos_emergencia")
-public class ContactoEmergencia {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContactoEmergenciaRPDTO {
     private int idContacto;
-
-    @Column(name = "nombre",nullable = false,length = 45)
     private String nombre;
-
-    @Column(name = "telefono",nullable = false)
     private int telefono;
-
-    @Column(name = "correoElectronico",nullable = false,length = 45)
     private String correoElectronico;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
     private Users usuario;
-
-    public ContactoEmergencia() {}
-    public ContactoEmergencia(int idContacto, String nombre, int telefono, String correoElectronico, Users usuario) {
-        this.idContacto = idContacto;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.correoElectronico = correoElectronico;
-        this.usuario = usuario;
-    }
 
     public int getIdContacto() {
         return idContacto;

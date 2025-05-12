@@ -22,33 +22,22 @@ public class Users implements Serializable {
     private int telefono;
     private String nombre;
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
-    }
-
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Role> roles;
+
+    public Users() {}
+
+    public Users(Long id, String username, String password, Boolean enabled, String correoElectronico, int telefono, String nombre, List<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.correoElectronico = correoElectronico;
+        this.telefono = telefono;
+        this.nombre = nombre;
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;
@@ -82,6 +71,30 @@ public class Users implements Serializable {
         this.enabled = enabled;
     }
 
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public List<Role> getRoles() {
         return roles;
     }
@@ -89,5 +102,4 @@ public class Users implements Serializable {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-
 }

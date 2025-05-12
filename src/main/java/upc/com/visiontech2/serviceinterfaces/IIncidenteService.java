@@ -9,6 +9,6 @@ public interface IIncidenteService {
     public void insert(Incidente i);
     public Incidente listId(int idIncidente);
     public void update(Incidente i);
-    public void delete(int idIncidente);
-    public List<Incidente> buscarPorTipo(String tipo);
+    public void deleteByRutaId(int idIncidente);
+    List<Incidente> buscarPorTipo(String tipo);
 }

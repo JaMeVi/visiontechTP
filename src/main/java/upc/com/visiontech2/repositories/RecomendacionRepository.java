@@ -12,4 +12,6 @@ import java.util.List;
 public interface RecomendacionRepository extends JpaRepository<Recomendacion, Integer> {
     @Query("Select r from Recomendacion r where r.comentario like %:comentario%")
     public List<Recomendacion> buscarComentario(@Param("comentario") String comentario);
+    @Query("SELECT AVG(r.puntuacion) FROM Recomendacion r WHERE r.ruta.idRuta = :idRuta")
+    Double obtenerPromedioPuntuacion(@Param("idRecomendacion") int idRecomendacion);
 }

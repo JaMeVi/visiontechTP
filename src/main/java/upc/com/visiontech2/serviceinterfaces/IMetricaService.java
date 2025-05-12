@@ -13,6 +13,7 @@ public interface IMetricaService {
 
     List<Metrica> listByNombreRuta(String nombreRuta);
 
+
     int sumCaloriasByNombreRuta(String nombreRuta);
 
 

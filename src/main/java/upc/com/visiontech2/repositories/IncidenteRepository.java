@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface IncidenteRepository extends JpaRepository<Incidente, Integer> {
     @Query("Select i from Incidente i where i.tipo like %:tipo%")
-    public List<Incidente> buscarTipo(@Param("tipo") String tipo);
+    List<Incidente> buscarTipo(@Param("tipo") String tipo);
 }

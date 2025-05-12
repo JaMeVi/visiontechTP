@@ -3,12 +3,13 @@ package upc.com.visiontech2.dto;
 import org.apache.catalina.User;
 
 public class RutaDTO {
-    private int idRuta;
+       private int idRuta;
     private String nombreRuta;
     private String destino;
     private String inicio;
     private String fin;
-    private int distanciaMinutos;
+    private boolean favorito;
+    private int distanciaMetros;
     private int tiempoRuta;
     private int longitud;
     private int latitud;
@@ -47,6 +48,14 @@ public class RutaDTO {
         this.inicio = inicio;
     }
 
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
+
     public String getFin() {
         return fin;
     }
@@ -55,12 +64,12 @@ public class RutaDTO {
         this.fin = fin;
     }
 
-    public int getDistanciaMinutos() {
-        return distanciaMinutos;
+    public int getDistanciaMetros() {
+        return distanciaMetros;
     }
 
-    public void setDistanciaMinutos(int distanciaMinutos) {
-        this.distanciaMinutos = distanciaMinutos;
+    public void setDistanciaMetros(int distanciaMetros) {
+        this.distanciaMetros = distanciaMetros;
     }
 
     public int getTiempoRuta() {
@@ -88,4 +97,4 @@ public class RutaDTO {
     }
 
 
-}
+

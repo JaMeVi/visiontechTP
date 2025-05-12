@@ -1,18 +1,14 @@
 package upc.com.visiontech2.dto;
 
 public class ContactoEmergenciaDTO {
-    private int idContactoEmergencia;
     private String nombre;
     private int telefono;
     private String correoElectronico;
+    private Long idUsuario;
 
-    public int getIdContactoEmergencia() {
-        return idContactoEmergencia;
-    }
+    public Long getIdUsuario() {  return idUsuario;}
 
-    public void setIdContactoEmergencia(int idContactoEmergencia) {
-        this.idContactoEmergencia = idContactoEmergencia;
-    }
+    public void setIdUsuario(Long idUsuario) {this.idUsuario = idUsuario;}
 
     public String getNombre() {
         return nombre;
