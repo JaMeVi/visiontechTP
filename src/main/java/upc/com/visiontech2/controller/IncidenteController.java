@@ -1,10 +1,14 @@
 package upc.com.visiontech2.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import upc.com.visiontech2.dto.IncidenteDTO;
 import upc.com.visiontech2.entities.Incidente;
+import upc.com.visiontech2.entities.Ruta;
+import upc.com.visiontech2.repositories.RutaRepository;
 import upc.com.visiontech2.serviceinterfaces.IIncidenteService;
 
 import java.util.List;
@@ -16,6 +20,7 @@ public class IncidenteController {
     @Autowired
     private IIncidenteService iR;
 
+    private RutaRepository rR;
     @GetMapping
     public List<IncidenteDTO> listar() {
         return iR.list().stream().map(x -> {
@@ -28,6 +33,10 @@ public class IncidenteController {
     public void registrar(@RequestBody IncidenteDTO iDTO) {
         ModelMapper m = new ModelMapper();
         Incidente i = m.map(iDTO, Incidente.class);
+
+        Ruta ruta = rR.findById(iDTO.getIdRuta())
+                .orElseThrow(() -> new EntityNotFoundException("Ruta no encontrada con ID: " + iDTO.getIdRuta()));
+        i.setRuta(ruta);
         iR.insert(i);
     }
 
@@ -47,15 +56,11 @@ public class IncidenteController {
 
     @DeleteMapping("/{idIncidente}")
     public void eliminar(@PathVariable("idIncidente") int idIncidente) {
-        iR.delete(idIncidente);
+        iR.deleteByRutaId(idIncidente);
     }
+    @GetMapping("/tipos/{tipo}")
+    public List<Incidente> buscarPorTipo(@PathVariable String tipo) {
+        return iR.buscarPorTipo(tipo);
 
-    @GetMapping("/busquedas")
-    public List<IncidenteDTO> buscar(@RequestParam String t) {
-        return iR.buscarPorTipo(t).stream().map(x -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(x, IncidenteDTO.class);
-        }).collect(Collectors.toList());
     }
-
 }

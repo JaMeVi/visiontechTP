@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="rutas")
 public class Ruta {
-    @Id
+       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRuta;
 
@@ -19,7 +19,10 @@ public class Ruta {
     private String inicio;
 
     @Column(name="distanciaMetros",nullable = false)
-    private int distanciaMinutos;
+    private int distanciaMetros;
+
+    @Column(name = "favorito", nullable = false)
+    private boolean favorito;
 
     @Column(name="tiempoRuta",nullable = false)
     private int tiempoRuta;
@@ -36,12 +39,12 @@ public class Ruta {
 
     public Ruta() {}
 
-    public Ruta(int idRuta, String nombreRuta, String destino, String inicio, String fin, int distanciaMinutos, int tiempoRuta, int longitud, int latitud, Users usuario) {
+    public Ruta(int idRuta, String nombreRuta, String destino, String inicio, String fin, int distanciaMetros, int tiempoRuta, int longitud, int latitud, Users usuario) {
         this.idRuta = idRuta;
         this.nombreRuta = nombreRuta;
         this.destino = destino;
         this.inicio = inicio;
-        this.distanciaMinutos = distanciaMinutos;
+        this.distanciaMetros = distanciaMetros;
         this.tiempoRuta = tiempoRuta;
         this.longitud = longitud;
         this.latitud = latitud;
@@ -80,12 +83,12 @@ public class Ruta {
         this.inicio = inicio;
     }
 
-    public int getDistanciaMinutos() {
-        return distanciaMinutos;
+    public int getDistanciaMetros() {
+        return distanciaMetros;
     }
 
-    public void setDistanciaMinutos(int distanciaMinutos) {
-        this.distanciaMinutos = distanciaMinutos;
+    public void setDistanciaMetros(int distanciaMetros) {
+        this.distanciaMetros = distanciaMetros;
     }
 
     public int getTiempoRuta() {
@@ -118,5 +121,10 @@ public class Ruta {
 
     public void setUsuario(Users usuario) {
         this.usuario = usuario;
+    }
+
+    public boolean isFavorito() {return favorito;}
+
+    public void setFavorito(boolean favorito) {this.favorito = favorito;
     }
 }
