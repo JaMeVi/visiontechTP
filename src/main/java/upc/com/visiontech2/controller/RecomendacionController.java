@@ -57,4 +57,9 @@ public class RecomendacionController {
             return m.map(x, RecomendacionDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @GetMapping("/promedio/{idRuta}")
+    public double obtenerPromedio(@PathVariable int idRecomendacion) {
+        return rS.obtenerPromedioPuntuacion(idRecomendacion);
+    }
 }
