@@ -1,5 +1,6 @@
 package upc.com.visiontech2.serviceimplements;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import upc.com.visiontech2.entities.Incidente;
@@ -35,13 +36,16 @@ public class IncidenteServiceImplement implements IIncidenteService {
     }
 
     @Override
-    public void delete(int idIncidente) {
+    public void deleteByRutaId(int idIncidente) {
         iR.deleteById(idIncidente);
     }
 
     @Override
     public List<Incidente> buscarPorTipo(String tipo) {
-        return iR.buscarTipo(tipo);
+        List<Incidente> incidentes = iR.buscarTipo(tipo);
+        if (incidentes.isEmpty()) {
+            throw new EntityNotFoundException("No se encontraron incidentes con el tipo: " + tipo);
+        }
+        return incidentes;
     }
 }
-
