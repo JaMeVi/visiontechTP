@@ -1,5 +1,6 @@
 package upc.com.visiontech2.serviceinterfaces;
 
+import upc.com.visiontech2.dto.RecomendacionDTO;
 import upc.com.visiontech2.entities.Recomendacion;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface IRecomendacionService {
     public void update(Recomendacion r);
     public void delete(int idRecomendacion);
     public List<Recomendacion> buscarPorComentario(String comentario);
+    void puntuarRuta(RecomendacionDTO dto);
+    double obtenerPromedioPuntuacion(int idRecomendacion);
 }
