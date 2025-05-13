@@ -83,6 +83,14 @@ public class CondicionAtmosfericaController {
         }).collect(Collectors.toList());
     }
 
-
-
+    @GetMapping("/ultima-condicion/{nombreRuta}")
+    @PreAuthorize("hasAuthority('PRO')")
+    public ResponseEntity<CondicionAtmosfericaDTO> getUltimaCondicion(@PathVariable String nombreRuta) {
+        return cA.findUltimaByNombreRuta(nombreRuta)
+                .map(condicion -> {
+                    ModelMapper modelMapper = new ModelMapper();
+                    return ResponseEntity.ok(modelMapper.map(condicion, CondicionAtmosfericaDTO.class));
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
