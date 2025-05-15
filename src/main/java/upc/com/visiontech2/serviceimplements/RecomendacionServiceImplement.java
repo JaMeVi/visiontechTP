@@ -55,9 +55,9 @@ public class RecomendacionServiceImplement implements IRecomendacionService {
     }
 
     @Override
-    public double obtenerPromedioPuntuacion(int idRecomendacion) {
+    public double obtenerPromedioPuntuacion(int idRuta) {
         List<RecomendacionDTO> rutaPuntuaciones = puntuaciones.stream()
-                .filter(c -> c.getIdRuta() == idRecomendacion).toList();
+                .filter(c -> c.getIdRuta() == idRuta).toList();
 
         if (rutaPuntuaciones.isEmpty()) return 0.0;
 
