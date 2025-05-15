@@ -43,8 +43,18 @@ public class UsersServiceImplement implements IUsersService {
     }
 
     @Override
+    public Users findById(long id) {
+        return uR.findById(id).orElse(new Users());
+    }
+
+    @Override
     public List<Users> obtenerUsuariosConMuchosRegistros(long minCantidad) {
         return uR.findUsuariosConMuchosRegistros(minCantidad);
+    }
+
+    @Override
+    public Users buscarPorUsername(String username) {
+        return uR.buscarPorUsername(username);
     }
 
     @Override

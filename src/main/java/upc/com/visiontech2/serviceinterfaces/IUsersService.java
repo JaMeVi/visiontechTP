@@ -8,7 +8,8 @@ public interface IUsersService {
     public void update (Users usuario);
     public void delete (long id);
     public Users listId(long id);
+    public Users findById(long id);
     public List<Users> obtenerUsuariosConMuchosRegistros(long minCantidad);
     public Users findOneByUsername(String username);
-
+    public Users buscarPorUsername(String username);
 }

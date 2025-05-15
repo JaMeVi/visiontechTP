@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import upc.com.visiontech2.dto.NumeroEmergenciaDTO;
+import upc.com.visiontech2.dto.NumeroEmergenciaInsertDTO;
 import upc.com.visiontech2.entities.NumeroEmergencia;
 import upc.com.visiontech2.entities.Users;
 import upc.com.visiontech2.serviceinterfaces.INumeroEmergenciaService;
@@ -29,11 +30,20 @@ public class NumeroEmergenciaController {
     }
 
     @PostMapping
-    public void insertar(@RequestBody NumeroEmergenciaDTO nDto){
-        ModelMapper modelMapper = new ModelMapper();
-        NumeroEmergencia n = modelMapper.map(nDto, NumeroEmergencia.class);
+    public void insertar(@RequestBody NumeroEmergenciaInsertDTO nDto){
+        NumeroEmergencia n = new NumeroEmergencia();
+        n.setTipoEmergencia(nDto.getTipoEmergencia());
+        n.setDistrito(nDto.getDistrito());
+        n.setTelefonoEmergencia(nDto.getTelefonoEmergencia());
+
+        Users user = new Users();
+        user.setId(nDto.getIdUsuario());
+        n.setUsuario(user);
+
         nS.insert(n);
     }
+
+
 
     @PutMapping
     public void modificar(@RequestBody NumeroEmergenciaDTO nDto){

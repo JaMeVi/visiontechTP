@@ -1,5 +1,6 @@
 package upc.com.visiontech2.serviceimplements;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import upc.com.visiontech2.entities.Role;
@@ -21,11 +22,18 @@ public class RolServiceImplement implements IRolService {
     public void insert(Role r) {        rR.save(r);    }
 
     @Override
-    public Role listId(int idRol) {        return rR.findById(idRol).orElse(new Role());    }
+    public Role listId(long idRol) {
+        return rR.findById(idRol).get();
+    }
 
     @Override
     public void update(Role r) {        rR.save(r);    }
 
     @Override
-    public void delete(int idRol) {        rR.deleteById(idRol);    }
+    @Transactional
+    public void delete(long idRol) {
+        rR.deleteById(idRol);
+    }
+
+
 }
