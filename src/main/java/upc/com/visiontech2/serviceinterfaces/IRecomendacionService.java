@@ -13,5 +13,5 @@ public interface IRecomendacionService {
     public void delete(int idRecomendacion);
     public List<Recomendacion> buscarPorComentario(String comentario);
     void puntuarRuta(RecomendacionDTO dto);
-    double obtenerPromedioPuntuacion(int idRecomendacion);
+    double obtenerPromedioPuntuacion(int idRuta);
 }
