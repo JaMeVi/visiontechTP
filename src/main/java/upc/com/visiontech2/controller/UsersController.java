@@ -7,12 +7,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import upc.com.visiontech2.dto.UserModifyDTO;
 import upc.com.visiontech2.dto.UserSecurityDTO;
 import upc.com.visiontech2.dto.UsersDTO;
 import upc.com.visiontech2.entities.Users;
 import upc.com.visiontech2.serviceinterfaces.IUsersService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,17 +51,29 @@ public class UsersController {
         return dto;
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping(value = "/username/{username}")
-    public UsersDTO buscarPorUsername(@PathVariable("username") String username) {
+    public ResponseEntity<Map<String, Object>> buscarPorUsername(@PathVariable("username") String username) {
+        Users usuario = uS.buscarPorUsername(username);
+        Map<String, Object> respuesta = new HashMap<>();
+
+        if (usuario == null) {
+            respuesta.put("mensaje", "Usuario no encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(respuesta);
+        }
+
         ModelMapper m = new ModelMapper();
-        return m.map(uS.findOneByUsername(username), UsersDTO.class);
+        UsersDTO dto = m.map(usuario, UsersDTO.class);
+
+        respuesta.put("mensaje", "Usuario encontrado");
+        respuesta.put("usuario", dto);
+        return ResponseEntity.ok(respuesta);
     }
 
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping(value = "/{id}", params = "type=id")
-    public ResponseEntity<String> delete(@PathVariable ("id") Integer id){
+    @DeleteMapping(value = "/{id}/elimninar")
+    public ResponseEntity<String> delete(@PathVariable ("id") long id){
 
         uS.delete(id);
         return ResponseEntity.ok("Usuario eliminado correctamente (ID: " + id + ")");
@@ -66,7 +81,7 @@ public class UsersController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping
-    public ResponseEntity<String> modificar(@Valid @RequestBody UsersDTO dto){
+    public ResponseEntity<String> modificar(@Valid @RequestBody UserModifyDTO dto){
         ModelMapper m=new ModelMapper();
         Users u=m.map(dto, Users.class);
         uS.update(u);
