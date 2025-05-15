@@ -36,7 +36,7 @@ public class IncidenteServiceImplement implements IIncidenteService {
     }
 
     @Override
-    public void deleteByRutaId(int idIncidente) {
+    public void delete(int idIncidente) {
         iR.deleteById(idIncidente);
     }
 
