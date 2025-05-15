@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class IncidenteController {
     @Autowired
     private IIncidenteService iR;
-
+    @Autowired
     private RutaRepository rR;
     @GetMapping
     public List<IncidenteDTO> listar() {
@@ -56,7 +56,7 @@ public class IncidenteController {
 
     @DeleteMapping("/{idIncidente}")
     public void eliminar(@PathVariable("idIncidente") int idIncidente) {
-        iR.deleteByRutaId(idIncidente);
+        iR.delete(idIncidente);
     }
     @GetMapping("/tipos/{tipo}")
     public List<Incidente> buscarPorTipo(@PathVariable String tipo) {
