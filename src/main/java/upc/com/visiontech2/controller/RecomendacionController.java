@@ -58,7 +58,7 @@ public class RecomendacionController {
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/promedio/{idRuta}")
+    @GetMapping("/promedio/{idRecomendacion}")
     public double obtenerPromedio(@PathVariable int idRecomendacion) {
         return rS.obtenerPromedioPuntuacion(idRecomendacion);
     }
